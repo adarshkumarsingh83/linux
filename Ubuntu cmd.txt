@@ -1,0 +1,19 @@
+http://www.ubuntugeek.com/ubuntu-package-management-from-command-line-using-apt-advanced-packaging-tool.html
+
+1.Update the list of available packages
+$sudo apt-get update
+
+2.Install a Package Using apt-get
+$sudo apt-get install packagename
+
+3.Reinstall a Package Using apt-get
+If you somehow damage an installed package, or simply want the files of a package 
+to be reinstalled with the newest version that is available, you can use the --reinstall option
+$sudo apt-get --reinstall install packagename
+
+4.Remove a Package Using apt-get
+$sudo apt-get remove packagename
+
+5.Running apt-get as above will cause the packages to be removed but their configuration files, 
+if any, will remain intact on the system. For a complete removal of the package
+$sudo apt-get --purge remove packagename

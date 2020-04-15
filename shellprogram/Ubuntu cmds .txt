@@ -1,0 +1,406 @@
+0:pwd=present working dir 
+$> pwd 
+home/adarsh$
+########################################################################################### 
+1:cal=display the current month calander 
+ex1.cal 
+ex2.cal <month> <year>
+   ex: cal <[mm|mon]> <[yyyy]>
+###########################################################################################   
+2:date=display the current date
+ex1.date
+ex2.date '+ %m-%y %H:%M:%S'   
+###########################################################################################   
+3:touch =create the empty text files 
+ex.touch <fileName1 fileName2 fileName3 ........fileNameN>   
+###########################################################################################
+4:mkdir=to create the direcoty 
+ex1.mkdir <dirName1 dirName2 dirName3 ..........dirNameN >
+ex2.mkdir <path>/dirName1 <path>/dirName2 ............... <path>/dirNameN
+###########################################################################################
+5:cd=change  directory 
+ex. cd <path>
+###########################################################################################
+6:cat= create a file with the input data 
+ex1. cat > <fileName> 
+ input the text cursour will wait for inputing the text
+ xxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxx
+ to exit press
+ <crt+d>
+ ex2. cat < <fileName> to display the data
+ ex3. cat  <fileName1> <fileName2>   > <newMergeFile> to merge the content of the two file
+ ###########################################################################################
+ 7.mv= to rename the file
+ ex1. mv <oldFileName> <newFileName>
+ ex2.mv <oldDirName> <newDirName>
+###########################################################################################
+ 8.rm=to remove the file and direcoty
+ ex1.rm -f <fileName1><fileName2><fileName3>........<fileNameN> to remove the file forcefully
+ ex2.rm -d <dirName1><dirName2><dirName3>..........<dirNameN> to remove the dir
+ ex3.rm -dr <dirName1><dirName2><dirName3>..........<dirNameN> to remove the dir recusively 
+###########################################################################################
+ 9:rmdir=to remove the dir
+ ex.rmdir <dirName1><dirName2><dirName3>..........<dirNameN>   
+###########################################################################################   
+10:cp=copy location to one location to other
+ex.  mkdir  sourceDir destDir
+      touch sourceDir/sample.txt
+     cp sourceDir/sample.txt destDir/
+###########################################################################################   
+11:ln= create the link 
+ex1.soft link reference to the file is created 
+$>mkdir  sourceDir destDir
+$>cat sourceDir/sample
+................................................
+ this is the link test 
+ ................................................
+ crt+d to exit
+$>ln -s sourceDir/sample destDir/
+$>ls destDir/
+
+ex2.hard link copy of the original file will be created
+$>mkdir  sourceDir destDir
+$>cat sourceDir/sample
+................................................
+ this is the link test 
+ ................................................
+ crt+d to exit
+$>ln sourceDir/sample destDir/
+$> cat destDir/sample
+ this is the link test 
+###########################################################################################   
+12: ls= listing the file 
+ex1. ls <fileName/dirName> show the list of the file
+ex2 ls -l <fileName/dirName> show all the file with permission 
+ex3 ls -al  <dirName> show all the hidden files with the permision 
+Note: any file created with .fileName is the hidden file in the linux
+$> touch .sample
+###########################################################################################   
+13:umaks
+first octal number rest three is the permission calculator number for file/dir
+0002
+when file/dir is created then this umask value is subrated for file/dir to the the permission 
+666-002= 664 for file permission 
+777-002=775 for the direcoty permission 
+###########################################################################################   
+14:chmod= change the file/dir permission 
+ex1. to add the permission to the file/dir
+4 | r=read permission 
+2 | w=write permission 
+1 | x=execute permission 
+user group other are the three catagoury of the users 
+
+$>mkdir test
+$> touch test/sample 
+$> ls -l test/sample 
+-rw-rw-r-- 1 adarsh adarsh 0 Oct  4 18:05 sample
+$>chmod 777 test/sample
+-rwxrwxrwx 1 adarsh adarsh 0 Oct  4 18:05 test/sample
+
+ex2 to add the permission to the exisiting permission set
+$> mkdir test
+$> touch test/sample.sh
+$> ls -l test/sample.sh 
+-rw-rw-r-- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$>chmod <+x  | +r| +w >test/sample.sh 
+$> ls -l test/sample.sh
+-rwxrwxr-x 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+
+ex3.to remove the permission from the exisiting permission set
+$>ls -l test/sample.sh 
+-rwxrwxr-x 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$>chmod < -x |-r |-w >  test/sample.sh
+$>ls -l test/sample.sh
+-rw-rw-r-- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+
+ex3
+$> chmod ugoa-rwx test/sample.sh 
+$>ls -l test/sample.sh 
+---------- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod ugo+r test/sample.sh 
+$> ls -l test/sample.sh 
+-r--r--r-- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod ugo+w test/sample.sh 
+$> ls -l test/sample.sh 
+-rw-rw-rw- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod ugo+x test/sample.sh 
+$> ls -l test/sample.sh 
+-rwxrwxrwx 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod ugo-x test/sample.sh 
+$> ls -l test/sample.sh 
+-rw-rw-rw- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod ugo-r test/sample.sh 
+$> ls -l test/sample.sh 
+--w--w--w- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod ugo-wrx test/sample.sh 
+$> ls -l test/sample.sh 
+---------- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod ugoa+rwx test/sample.sh 
+$> ls -l test/sample.sh 
+-rwxrwxrwx 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+
+ex4
+$> chmod ugoa-rwx test/sample.sh 
+$> ls -l test/sample.sh 
+---------- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> ls -l test/sample.sh 
+---------- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod 777 test/sample.sh 
+$> ls -l test/sample.sh 
+-rwxrwxrwx 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> 
+
+ex5
+ls -l test/sample.sh 
+---------- 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod 111 test/sample.sh 
+$> ls -l test/sample.sh 
+---x--x--x 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+$> chmod 333 test/sample.sh 
+$> ls -l test/sample.sh 
+--wx-wx-wx 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+chmod 777 test/sample.sh 
+$> ls -l test/sample.sh 
+-rwxrwxrwx 1 adarsh adarsh 0 Oct  4 18:08 test/sample.sh
+###########################################################################################   
+15:file= display the file type 
+ex 
+$> file * 
+$> file <path>
+###########################################################################################   
+16:wc=word count 
+  wc -l =line count 
+  wc -c = char count
+  wc -w =world count
+ex 
+$>mkdir test
+4>cat > test/myFile
+...................................
+hi this is the test for wc command 
+this 
+is the 
+sample 
+text
+......................................
+$>cat test/myFile 
+hi this is the test for wc command 
+this 
+is the 
+sample 
+text
+$>wc test/myFile 
+ 5 13 63 test/myFile
+ 5=lines in the file 
+ 13=words in the file
+ 63=char in the file 
+###########################################################################################   
+17:sort=sort the the input/file content in alphabat order 
+ex1
+$> sort
+.................................. 
+xxx
+aaa
+ttt
+zzz
+..................................
+crt+d
+aaa
+ttt
+xxx
+zzz
+
+ex2
+$> cat > sortFile
+ww
+ss
+aa
+qq
+$> sort sortFile
+aa
+qq
+ss
+ww
+ex3
+$> cat sortFile1
+ww
+ss
+aa
+qq
+$>  cat sortFile2
+dd
+ss
+qq
+zz
+aa
+$>  sort sortFile1 sortFile2
+aa
+aa
+dd
+qq
+qq
+ss
+ss
+ww
+zz
+###########################################################################################   
+18:cut=will cut the file data from any file delemeter by any char default is tab
+$> cat > dataFile
+eno,ename,email,age
+1,aaa,aa@aa,11
+2,bbb,bb@bb,22
+3,ccc,cc@cc,33
+4,ddd,dd@dd,44
+5,eee,ee@ee,55
+$> cat dataFile
+eno,ename,email,age
+1,aaa,aa@aa,11
+2,bbb,bb@bb,22
+3,ccc,cc@cc,33
+4,ddd,dd@dd,44
+5,eee,ee@ee,55
+$> cut -d"," -f 1,2 dataFile
+eno,ename
+1,aaa
+2,bbb
+3,ccc
+4,ddd
+5,eee
+Note: -d is delimeter default is tab;-f is the field list in the file
+###########################################################################################   
+19:dd=conver and copy 
+ex
+$> mkdir ddTest
+$> cat > ddTest/lowerTextFile
+.......................................................
+this is the lower test sample file
+.......................................................
+$> dd if=ddTest/lowerTextFile of=ddTest/upperTextFile conv=ucase
+0+1 records in
+0+1 records out
+36 bytes (36 B) copied, 0.000472197 s, 76.2 kB/s
+$>cat ddTest/lowerTextFile 
+this is the lower test sample file 
+$>cat ddTest/upperTextFile 
+THIS IS THE LOWER TEST SAMPLE FILE
+Note: if=input file of=output file 
+###########################################################################################   
+20:compress=compress the file 
+$>compress -v compressTestFile 
+compressTestFile:  -- replaced with compressTestFile.Z Compression: 86.03%
+$> ls -l compressTestFile*
+-rw-rw-r-- 1 adarsh adarsh 74 Oct  4 23:43 compressTestFile.Z
+$> zcat compressTestFile.Z  
+......................................................
+adsaaaaaaaaaaaaaaaaaaaaaaa
+adsssssssssssssssssssssssssss
+asddddddddddddddddddddd
+...............................................
+Note:zcat is use to display the compress file content
+###########################################################################################   
+21:set=set the file content in the positional parameter 
+ex:1
+$>  cat > myFile
+hi this is my sample file 
+$>  set `cat myFile` 
+$>  echo $*
+hi this is my sample file
+$>  echo $@
+hi this is my sample file
+$>  echo $1 $2 $3 $4 $5 $6
+hi this is my sample file
+
+ex2:
+set `who am i `
+$>  echo $*
+adarsh pts/0 2014-10-05 15:54 (:0)
+$>  echo $@
+adarsh pts/0 2014-10-05 15:54 (:0)
+$>  echo $1 $2 $3 $4 $5
+adarsh pts/0 2014-10-05 15:54 (:0)
+$> echo $#
+5
+
+ex3:
+$>  set this is the sample test for set test
+$>  echo $#
+8
+$>  echo $@
+this is the sample test for set test
+$>  echo $*
+this is the sample test for set test
+$>  echo $1 $2 $3 $4 $5 $6  $7 $8
+this is the sample test for set test
+
+Note: $0=hold the file name ,$1=hold first param ....$n=hold n param
+$*=hold all the param,$@=hold all the param
+$#=hold the count of the all the param
+###########################################################################################   
+22:expr=instruct the shell that statements are expression for evaluation 
+ex1
+$>a=10 b=20
+$> echo `expr $a + $b`
+30
+
+ex2
+$> a=10 b=20
+$> echo `expr $a \* $b`
+$>200
+
+ex3:
+$>  a=10 b=20 c=30
+$>  echo `expr $a \* \( 5 + $b \) / $c`
+8
+
+###########################################################################################   
+23:bc=to caluculate floatin/real number values 
+ex1 
+$>  a=10.5 b=20.3
+$>  echo $a + $b | bc
+30.8
+
+ex2
+$>  a=10.5 b=20.3
+$>   c=`echo $a + $b | bc`
+$>  echo $c
+30.8
+###########################################################################################   
+34:tput= terminals utitliy 
+ex =tput lines example calculate total lines in the terminal
+$>tput lines
+
+ex= tput cols example calculate total cols in the terminal
+$>tput cols
+
+ex =tput bolds example
+$>tput bold
+$>echo "this is tput bold test"
+$> echo "\033[0m"
+
+ex=tput cup to send the cursor to the particular row and particular cols
+$> tput cup <rowNumber> <colNumber>
+
+###########################################################################################   
+35: $?=to check the status of the cmd executed 0 for successful and 1 for unSucessful
+$> pwd <---|
+$> $? 
+
+###########################################################################################   
+
+###########################################################################################   
+
+
+###########################################################################################   
+
+
+###########################################################################################   
+
+
+###########################################################################################   
+
+
+###########################################################################################   
+
+
+###########################################################################################   
+

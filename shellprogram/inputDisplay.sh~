@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for inputWord in $*
+do
+   echo $inputWord
+done

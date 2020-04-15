@@ -1,0 +1,14 @@
+#Rename file $> sudo bash renameFile.sh
+
+# cat > sample.txt
+# Text in the file
+# crt+d
+
+echo "Enter the Source and Traget File Name "
+read sourceFile targetFile
+if mv $sourceFile $targetFile 
+then 
+  echo "File is rename Successfully"
+else
+    echo "File is rename is UnSuccessfully"  
+fi

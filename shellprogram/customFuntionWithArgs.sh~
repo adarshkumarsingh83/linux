@@ -1,0 +1,13 @@
+#!/bin/bash
+
+welcomeMessage(){
+ echo "welcome to the system\"$@\""
+}
+
+inputNames(){
+  echo -n "Enter Text > "
+  read text
+  welcomeMessage $text
+}
+
+inputNames

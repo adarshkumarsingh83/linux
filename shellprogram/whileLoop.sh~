@@ -1,0 +1,11 @@
+#!/bin/bash
+# $> chmod +x
+# $> bash whileLoop.sh
+index=1
+ 
+# continue until $n equals 5
+while [ $index -le 5 ]
+do
+	echo " $index "
+	index=$(( index+1 ))	 
+done

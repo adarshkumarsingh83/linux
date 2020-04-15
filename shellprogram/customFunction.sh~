@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ welcomeWish(){
+    echo "Welcome to the Ubuntu Shell"
+}
+
+welcomeWish
